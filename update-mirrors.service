@@ -1,0 +1,7 @@
+[Service]
+ExecStart=/bin/bash /usr/local/bin/update-mirrors.sh
+Type=oneshot
+
+[Unit]
+Requires=network.target
+After=network.target
