@@ -13,6 +13,10 @@ curl "$URL" \
     | grep -v '## Germany' \
     | sed 's/^#Server/Server/g' \
     | rankmirrors -n 20 - \
-    > "$MIRRORLIST"
+    > "$MIRRORLIST.new"
+
+if [[ -s "$MIRRORLIST.new" ]]; then
+    mv "$MIRRORLIST.new" "$MIRRORLIST"
+fi
 
 pacman -Syy --noconfirm
